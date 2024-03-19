@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:tiny_tots_care/Doctors/login.dart';
+
+import 'package:tiny_tots_care/Admin/Admin.dart';
+import 'package:tiny_tots_care/Admin/category.dart';
+import 'package:tiny_tots_care/Admin/forgotten.dart';
+import 'package:tiny_tots_care/Admin/login.dart';
+import 'package:tiny_tots_care/Admin/loginp.dart';
+import 'package:tiny_tots_care/Parent/p.home.dart';
+
 import 'package:tiny_tots_care/screens/splash.dart';
 
 void main() {
@@ -20,6 +29,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Splash()
+
+
     );
   }
 }

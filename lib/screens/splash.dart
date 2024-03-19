@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/screens/splash2.dart';
-import 'package:tiny_tots_care/Doctors/login.dart';
+import 'package:tiny_tots_care/Admin/login.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -12,16 +12,16 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   Timer(
-  //     const Duration(seconds: 4),
-  //         () => Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const login()),
-  //     ),
-  //   );
-  // }
+  void initState() {
+    super.initState();
+    Timer(
+      const Duration(seconds: 4),
+          () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const login()),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,19 @@ class _SplashState extends State<Splash> {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15, top: 40),
+              child: IconButton(
+                icon: Icon(Icons.more_vert),
+                color: Colors.black,
+                onPressed: () {},
+              ),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.only(top: 70.0,),
+            padding: const EdgeInsets.only(top: 80.0),
             child: Center(
               child: Column(
                 children: [
@@ -47,44 +58,42 @@ class _SplashState extends State<Splash> {
                     height: 120,
                   ),
                   SizedBox(height: 10),
-                  Text("TINY TOTS CARE",style: TextStyle(color: Colors.black)),
-                  SizedBox(height: 250,),
-    ClipRRect(
-    borderRadius: BorderRadius.circular(4),
-    child: Stack(
-    children: <Widget>[
-    Positioned.fill(
-    child: Container(
-    decoration: const BoxDecoration(
-    gradient: LinearGradient(
-    colors: Colors.primaries,
-    ),
-    ),
-    ),
-    ),
-                  TextButton(
-                  style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-    padding: const EdgeInsets.all(10.0),
-    textStyle: const TextStyle(fontSize: 35),
-    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Splash2()),
-                      );
-                    },
-                    child: Text(
-                      "START",
+                  Text("TINY TOTS CARE", style: TextStyle(color: Colors.black)),
+                  SizedBox(height: 250),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned.fill(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: Colors.primaries,
+                              ),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.all(10.0),
+                            textStyle: const TextStyle(fontSize: 35),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Splash2()),
+                            );
+                          },
+                          child: Text("START"),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-    ],
           ),
-          ),
-          )
         ],
       ),
     );

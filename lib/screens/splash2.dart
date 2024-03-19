@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import '../Admin/login.dart';
+import '../home.dart';
 
-import '../Doctors/login.dart';
 
 class Splash2 extends StatefulWidget {
-  const Splash2({super.key});
+  const Splash2({Key? key});
 
   @override
   State<Splash2> createState() => _Splash2State();
@@ -23,8 +24,28 @@ class _Splash2State extends State<Splash2> {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5, right: 15, top: 40),
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                  );
+                },
+                child: Text(
+                  "ADMIN",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.only(top: 70.0,),
+            padding: const EdgeInsets.only(top: 80.0),
             child: Center(
               child: Column(
                 children: [
@@ -34,16 +55,16 @@ class _Splash2State extends State<Splash2> {
                     height: 120,
                   ),
                   SizedBox(height: 10),
-                  Text("TINY TOTS CARE",style: TextStyle(color: Colors.black)),
-                  SizedBox(height: 250,),
+                  Text("TINY TOTS CARE", style: TextStyle(color: Colors.black)),
+                  SizedBox(height: 250),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),
                     child: Stack(
                       children: <Widget>[
                         Positioned.fill(
                           child: Container(
-                            decoration: const BoxDecoration(
-                                color: Colors.grey,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -69,10 +90,9 @@ class _Splash2State extends State<Splash2> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
