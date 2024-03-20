@@ -28,21 +28,27 @@ class _CategoryState extends State<Category> {
                     height: 50,
                     width: 80,
                     color: const Color(0xFFACE3EF),
-                    child: Center(child: Text("select category",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),))),
+                    child: Center(
+                        child: Text(
+                      "select category",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ))),
               ),
-              SizedBox(height: 25.0,),
+              SizedBox(
+                height: 25.0,
+              ),
               Container(
                 width: 350,
                 height: 70,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), // Optional: adjust the radius as needed
-                  gradient: LinearGradient( colors: [
-                    Color(0xFFE8C4E9),
-                    Color(0xFFFFFFFF),
-                  ],
+                  borderRadius: BorderRadius.circular(
+                      8), // Optional: adjust the radius as needed
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFE8C4E9),
+                      Color(0xFFFFFFFF),
+                    ],
                     begin: Alignment.topCenter, // Gradient start position
                     end: Alignment.bottomCenter, // Gradient end position
                   ),
@@ -52,18 +58,24 @@ class _CategoryState extends State<Category> {
                     // Navigate to Doctor login screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Parentregistration()),
+                      MaterialPageRoute(
+                          builder: (context) => Parentregistration()),
                     );
                   },
                   child: Text(
                     "PARENT",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent, // Make button background transparent
+                    primary: Colors
+                        .transparent, // Make button background transparent
                     elevation: 0, // Optional: Remove button elevation
                     padding: EdgeInsets.zero, // Optional: Remove padding
-                    textStyle: TextStyle(color: Colors.white), // Optional: Text color
+                    textStyle:
+                        TextStyle(color: Colors.white), // Optional: Text color
                   ),
                 ),
               ),
@@ -72,11 +84,13 @@ class _CategoryState extends State<Category> {
                 width: 350,
                 height: 70,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), // Optional: adjust the radius as needed
-                  gradient: LinearGradient( colors: [
-                    Color(0xFFFFFB94),
-                    Color(0xFFFFFFFF),
-                  ],
+                  borderRadius: BorderRadius.circular(
+                      8), // Optional: adjust the radius as needed
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFFFFB94),
+                      Color(0xFFFFFFFF),
+                    ],
                     begin: Alignment.topCenter, // Gradient start position
                     end: Alignment.bottomCenter, // Gradient end position
                   ),
@@ -86,18 +100,24 @@ class _CategoryState extends State<Category> {
                     // Navigate to Doctor login screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Babysittersregistration()),
+                      MaterialPageRoute(
+                          builder: (context) => Babysittersregistration()),
                     );
                   },
                   child: Text(
                     "BABYSITTERS",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent, // Make button background transparent
+                    primary: Colors
+                        .transparent, // Make button background transparent
                     elevation: 0, // Optional: Remove button elevation
                     padding: EdgeInsets.zero, // Optional: Remove padding
-                    textStyle: TextStyle(color: Colors.white), // Optional: Text color
+                    textStyle:
+                        TextStyle(color: Colors.white), // Optional: Text color
                   ),
                 ),
               ),
@@ -106,11 +126,13 @@ class _CategoryState extends State<Category> {
                 width: 350,
                 height: 70,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), // Optional: adjust the radius as needed
-                  gradient: LinearGradient( colors: [
-                    Color(0xFFBFD2E4),
-                    Color(0xFFFFFFFF),
-                  ],
+                  borderRadius: BorderRadius.circular(
+                      8), // Optional: adjust the radius as needed
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFBFD2E4),
+                      Color(0xFFFFFFFF),
+                    ],
                     begin: Alignment.topCenter, // Gradient start position
                     end: Alignment.bottomCenter, // Gradient end position
                   ),
@@ -120,76 +142,50 @@ class _CategoryState extends State<Category> {
                     // Navigate to Doctor login screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Doctorregistration()),
+                      MaterialPageRoute(
+                          builder: (context) => Doctorregistration()),
                     );
                   },
                   child: Text(
                     "DOCTORS",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent, // Make button background transparent
+                    primary: Colors
+                        .transparent, // Make button background transparent
                     elevation: 0, // Optional: Remove button elevation
                     padding: EdgeInsets.zero, // Optional: Remove padding
-                    textStyle: TextStyle(color: Colors.white), // Optional: Text color
+                    textStyle:
+                        TextStyle(color: Colors.white), // Optional: Text color
                   ),
                 ),
               ),
-              SizedBox(height: 25.0),
-              Container(
-                width: 350,
-                height: 70,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), // Optional: adjust the radius as needed
-                  gradient: LinearGradient( colors: [
-                    Color(0xFF61EDDC),
-                    Color(0xFFFFFFFF),
-                  ],
-                    begin: Alignment.topRight, // Gradient start position
-                    end: Alignment.bottomLeft, // Gradient end position
-                  ),
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to Doctor login screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => login()),
-                    );
-                  },
-                  child: Text(
-                    "ACTIVITY",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent, // Make button background transparent
-                    elevation: 0, // Optional: Remove button elevation
-                    padding: EdgeInsets.zero, // Optional: Remove padding
-                    textStyle: TextStyle(color: Colors.white), // Optional: Text color
-                  ),
-                ),
+              SizedBox(
+                height: 28.0,
               ),
-              SizedBox(height: 28.0,),
               Center(
-                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Childline Number: 1098",
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                     IconButton(
                       icon: Icon(Icons.phone),
                       color: Colors.black,
                       onPressed: () {},
                     ),
-
                   ],
                 ),
               ),
-
-
-            ]
-        ),
+            ]),
       ),
     );
   }

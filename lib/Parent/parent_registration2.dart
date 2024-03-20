@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Parent/p.home.dart';
 
 class Parentregistration2 extends StatefulWidget {
   const Parentregistration2({super.key});
@@ -8,6 +9,22 @@ class Parentregistration2 extends StatefulWidget {
 }
 
 class _Parentregistration2State extends State<Parentregistration2> {
+  DateTime? _selectedDate;
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null && pickedDate != _selectedDate) {
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,14 +67,29 @@ class _Parentregistration2State extends State<Parentregistration2> {
                   child: Text("Date of Birth", style: TextStyle(color: Colors.black)),
                 ),
                 SizedBox(height: 2.0),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Date of Birth",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
+                GestureDetector(
+                  onTap: () => _selectDate(context),
+                  child: AbsorbPointer(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: _selectedDate != null
+                            ? _selectedDate.toString().split(" ")[0]
+                            : "DOB",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
                     ),
                   ),
                 ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: "Date of Birth",
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(15.0),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text("Blood group", style: TextStyle(color: Colors.black)),
@@ -165,7 +197,7 @@ class _Parentregistration2State extends State<Parentregistration2> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Parentregistration2()),
+                      MaterialPageRoute(builder: (context) => Phome()),
                     );
                   },
                   child: Center(
