@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Admin/activity.dart';
 import 'package:tiny_tots_care/Admin/login.dart';
 import 'package:tiny_tots_care/Parent/parent_registration.dart';
 
@@ -129,7 +130,6 @@ class Home extends StatelessWidget {
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to Doctor login screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -174,7 +174,7 @@ class Home extends StatelessWidget {
                   // Navigate to Doctor login screen
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => login()),
+                    MaterialPageRoute(builder: (context) => Activity()),
                   );
                 },
                 child: Text(

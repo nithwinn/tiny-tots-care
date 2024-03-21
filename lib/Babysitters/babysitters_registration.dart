@@ -9,6 +9,29 @@ class Babysittersregistration extends StatefulWidget {
 }
 
 class _BabysittersregistrationState extends State<Babysittersregistration> {
+  TextEditingController _b1nameEditingController = TextEditingController();
+  TextEditingController _b1addressEditingController = TextEditingController();
+  TextEditingController _b1qualificationEditingController = TextEditingController();
+  TextEditingController _b1experinceEditingController = TextEditingController();
+  TextEditingController _b2idEditingController = TextEditingController();
+
+  DateTime? _selectedDate;
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null && pickedDate != _selectedDate) {
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +62,13 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
               ),
               SizedBox(height: 2.0),
               TextFormField(
+                controller: _b1nameEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter name';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Name",
                   border: OutlineInputBorder(
@@ -51,7 +81,13 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
                 child: Text("Address", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _b1addressEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter address';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Address",
                   border: OutlineInputBorder(
@@ -64,7 +100,13 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
                 child: Text("Qualification", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _b1qualificationEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter qualification';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Qualification",
                   border: OutlineInputBorder(
@@ -77,11 +119,18 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
                 child: Text("Date of Birth", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "DOB",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+              GestureDetector(
+                onTap: () => _selectDate(context),
+                child: AbsorbPointer(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: _selectedDate != null
+                          ? _selectedDate.toString().split(" ")[0]
+                          : "DOB",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -90,7 +139,13 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
                 child: Text("Experince", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _b1experinceEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter experience';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Experince",
                   border: OutlineInputBorder(
@@ -104,7 +159,13 @@ class _BabysittersregistrationState extends State<Babysittersregistration> {
                 child: Text("ID Proof Number", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+                TextFormField(controller: _b2idEditingController,
+                  validator: (value){
+                    if (value == null || value.isEmpty){
+                      return'enter ID proof';
+                    }
+                    return null;
+                  },
                 decoration: InputDecoration(
                   hintText: "ID Proof Number",
                   border: OutlineInputBorder(

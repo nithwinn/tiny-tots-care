@@ -8,6 +8,8 @@ class Doctorregistration2 extends StatefulWidget {
 }
 
 class _Doctorregistration2State extends State<Doctorregistration2> {
+  TextEditingController _d1ExperiencerEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,13 @@ class _Doctorregistration2State extends State<Doctorregistration2> {
     child: Text("Experience", style: TextStyle(color: Colors.black)),
     ),
     SizedBox(height: 2.0),
-    TextFormField(
+    TextFormField(controller: _d1ExperiencerEditingController,
+      validator: (value){
+        if (value == null || value.isEmpty){
+          return'enter Experience';
+        }
+        return null;
+      },
     decoration: InputDecoration(
     hintText: "Experience",
     border: OutlineInputBorder(

@@ -9,6 +9,11 @@ class Parentregistration extends StatefulWidget {
 }
 
 class _ParentregistrationState extends State<Parentregistration> {
+  TextEditingController _p1nameEditingController = TextEditingController();
+  TextEditingController _p1addressEditingController = TextEditingController();
+  TextEditingController _p1pincodeEditingController = TextEditingController();
+  TextEditingController _p1phonenumberEditingController = TextEditingController();
+  TextEditingController _p1whatsappEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +44,13 @@ class _ParentregistrationState extends State<Parentregistration> {
               ),
               SizedBox(height: 2.0),
               TextFormField(
+                controller: _p1nameEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter email';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Name",
                   border: OutlineInputBorder(
@@ -51,7 +63,13 @@ class _ParentregistrationState extends State<Parentregistration> {
                 child: Text("Address", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _p1addressEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter email';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Address",
                   border: OutlineInputBorder(
@@ -64,7 +82,13 @@ class _ParentregistrationState extends State<Parentregistration> {
                 child: Text("Pin code", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _p1pincodeEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter email';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Pin code",
                   border: OutlineInputBorder(
@@ -77,7 +101,14 @@ class _ParentregistrationState extends State<Parentregistration> {
                 child: Text("Phone number", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _p1phonenumberEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter Phone number';
+                  }
+                  return null;
+                },
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: "Phone number",
                   border: OutlineInputBorder(
@@ -90,7 +121,13 @@ class _ParentregistrationState extends State<Parentregistration> {
                 child: Text("Whatsapp", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
-              TextFormField(
+              TextFormField(controller: _p1whatsappEditingController,
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return'enter whatsapp';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: "Whatsapp",
                   border: OutlineInputBorder(

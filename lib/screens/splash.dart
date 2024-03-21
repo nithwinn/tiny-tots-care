@@ -58,7 +58,8 @@ class _SplashState extends State<Splash> {
                     height: 120,
                   ),
                   SizedBox(height: 10),
-                  Text("TINY TOTS CARE", style: TextStyle(color: Colors.black)),
+                  Text("TINY TOTS CARE", style: TextStyle(color: Colors.black)
+                  ),
                   SizedBox(height: 250),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),

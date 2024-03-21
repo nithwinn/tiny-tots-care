@@ -8,6 +8,7 @@ class Babysittersregistration2 extends StatefulWidget {
 }
 
 class _Babysittersregistration2State extends State<Babysittersregistration2> {
+  TextEditingController _b1phonenumberEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,14 @@ class _Babysittersregistration2State extends State<Babysittersregistration2> {
     child: Text("Phone Number", style: TextStyle(color: Colors.black)),
     ),
     SizedBox(height: 2.0),
-    TextFormField(
+        TextFormField(controller: _b1phonenumberEditingController,
+          validator: (value){
+            if (value == null || value.isEmpty){
+              return'enter Phone number';
+            }
+            return null;
+          },
+          keyboardType: TextInputType.number,
     decoration: InputDecoration(
     hintText: "Phone Number",
     border: OutlineInputBorder(
