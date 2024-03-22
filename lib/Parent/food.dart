@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_tots_care/Parent/p.home.dart';
+
+
+import 'p.home.dart';
 
 class Food extends StatefulWidget {
   const Food({Key? key}) : super(key: key);
@@ -344,7 +346,12 @@ class _FoodState extends State<Food> {
                             IconButton(
                               icon: Icon(Icons.home),
                               color: Colors.black,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Phome()),
+                                );
+                              },
                             ),
                             Text("Home"),
                           ],

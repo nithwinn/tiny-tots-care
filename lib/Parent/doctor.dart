@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'doctor_booking.dart';
+import 'doctor_booking2.dart';
+import 'p.home.dart';
+
+
 class Doctor extends StatefulWidget {
   const Doctor({Key? key}) : super(key: key);
 
@@ -41,185 +46,268 @@ class _DoctorState extends State<Doctor> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(35.0),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(35.0),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 40.0,
-              ),
-              Container(
-                height: 250,
-                width: 350,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(35.0),
+                SizedBox(
+                  height: 40.0,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 100,left: 10),
-                  child: Row(
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5), // Shadow color
+                        spreadRadius: 5, // Spread radius
+                        blurRadius: 4, // Blur radius
+                        offset: Offset(0, 3),
+                        // Offset in x and y directions
+                      ),
+                    ],
+                  ),
+                  child: Column(
                     children: [
-                      Image.asset(
-                        "assets/doctor1.png",
-                        height: 100,
-                        width: 150,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30,top: 50),
-                            child: Text(
-                              "DR.SARAH",
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30,),
-                            child: Text(
-                              "pediatrician",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                          SizedBox(height: 15.0,),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(8.0),
-                          //   child: Text("Tirur City Hospital"
-                          //       ",Trikandiyoor Rd"
-                          //       ",near Busstand,04563218953"),
-                          // )
-                        ],
+                      Doctorcardwidget(
+                        subtittle:
+                            " Tirur City Hospital\n Trikandiyoor Rd\n,near Bus stand\n 04563218953",
+                        imagename: "assets/doctor1.png",
+                        name: "DR.Sarah",
+                        book: "Book",
+                        call: "call",
+                        calltap: () {},
+                        booktap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DoctorBooking()),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 25,),
-              Container(
-                height: 250,
-                width: 350,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(35.0),
+                SizedBox(
+                  height: 25,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 100,left: 10),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/doctor2.png",
-                        height: 100,
-                        width: 150,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30,top: 50),
-                            child: Text(
-                              "DR.Antony",
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30,),
-                            child: Text(
-                              "pediatrician",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                          SizedBox(height: 15.0,),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(8.0),
-                          //   child: Text("Tirur City Hospital"
-                          //       ",Trikandiyoor Rd"
-                          //       ",near Busstand,04563218953"),
-                          // )
-                        ],
-                      ),
-                    ],
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5), // Shadow color
+                          spreadRadius: 5, // Spread radius
+                          blurRadius: 4, // Blur radius
+                          offset: Offset(0, 3),
+                          // Offset in x and y directions
+                        ),
+                      ],
+                    ),
+                    child: Doctorcardwidget(
+                      book: "Book",
+                      call: "call",
+                      calltap: () {},
+                      booktap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                            builder: (context) => DoctorBooking2()),
+                        );
+                      },
+                      subtittle: " M.B. Hospital\nmalappuram\n04832345678",
+                      imagename: "assets/doctor2.png",
+                      name: "DR.Antony",
+                    ),
                   ),
                 ),
-              ),
-              ],
-              // floatingActionButton: Padding(
-              //   padding: const EdgeInsets.only(top: 805, left: 25.0),
-              //   child: Row(
-              //     children: [
-              //       Column(
-              //         children: [
-              //           IconButton(
-              //             icon: Icon(Icons.home),
-              //             color: Colors.black,
-              //             onPressed: () {},
-              //           ),
-              //           Text("Home"),
-              //         ],
-              //       ),
-              //       SizedBox(width: 55.0),
-              //       Column(
-              //         children: [
-              //           IconButton(
-              //             icon: Icon(Icons.add_circle),
-              //             color: Colors.black,
-              //             onPressed: () {},
-              //           ),
-              //           Text("Activity"),
-              //         ],
-              //       ),
-              //       SizedBox(width: 55.0),
-              //       Column(
-              //         children: [
-              //           IconButton(
-              //             icon: Icon(Icons.child_care),
-              //             color: Colors.black,
-              //             onPressed: () {},
-              //           ),
-              //           Text("My child"),
-              //         ],
-              //       ),
-              //       SizedBox(width: 55.0),
-              //       Column(
-              //         children: [
-              //           IconButton(
-              //             icon: Icon(Icons.person),
-              //             color: Colors.black,
-              //             onPressed: () {},
-              //           ),
-              //           Text("Profile"),
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-        ),
-
+              ]),
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(top: 75, left: 20.0),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.home),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Phome()),
+                        );
+                      },
+                    ),
+                    Text("Home"),
+                  ],
+                ),
+                SizedBox(width: 50.0),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.add_circle),
+                      color: Colors.black,
+                      onPressed: () {},
+                    ),
+                    Text("Activity"),
+                  ],
+                ),
+                SizedBox(width: 50.0),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.child_care),
+                      color: Colors.black,
+                      onPressed: () {},
+                    ),
+                    Text("My child"),
+                  ],
+                ),
+                SizedBox(width: 50.0),
+                Column(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.person),
+                      color: Colors.black,
+                      onPressed: () {},
+                    ),
+                    Text("Profile"),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
 
+class Doctorcardwidget extends StatelessWidget {
+  final String? name;
+  final String imagename;
+  final String? subtittle, book, call;
+  final void Function()? booktap, calltap;
+  const Doctorcardwidget({
+    super.key,
+    this.name,
+    required this.imagename,
+    this.subtittle,
+    this.book,
+    this.call,
+    this.booktap,
+    this.calltap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisSize: MainAxisSize.min,
+
+        children: [
+          Image.asset(
+            imagename ?? "",
+            height: 100,
+            width: 150,
+          ),
+          Spacer(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name ?? "",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                "Pediatricians",
+                style: TextStyle(
+                  fontSize: 25,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                subtittle ?? "",
+                style: TextStyle(
+                  fontSize: 25,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.justify,
+              ),
+            ],
+          ),
+        ],
+      ),
+      Row(
+        children: [
+          TextButtonWidget(
+            ontap: booktap,
+            title: book ?? "",
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          TextButtonWidget(
+            title: call ?? "",
+            ontap: calltap,
+          )
+        ],
+      )
+    ]);
+  }
+}
+
+class TextButtonWidget extends StatelessWidget {
+  final String title;
+  final void Function()? ontap;
+  const TextButtonWidget({
+    super.key,
+    required this.title,
+    this.ontap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: ontap,
+      child: Container(
+          // width: ,/
+          padding: EdgeInsets.symmetric(vertical: 3, horizontal: 17),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            color: Color(0xFF468FD0),
+          ),
+          child: Text(
+            title,
+            style: TextStyle(
+                fontSize: 25,
+                // fontWeight: FontWeight.bold,
+                color: Colors.black),
+          )),
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Admin/forgotten.dart';
+import 'package:tiny_tots_care/Doctors/dhome.dart';
 
-import '../home.dart';
+import '../DomainAmin.dart';
 class Logind extends StatefulWidget {
   const Logind({super.key});
 
@@ -81,7 +82,7 @@ class _LogindState extends State<Logind> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Home()),
+                                MaterialPageRoute(builder: (context) => Dhome()),
                               );
                             },
                             child: Center(

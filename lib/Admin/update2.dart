@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_tots_care/Admin/a&u.dart';
-import '../Parent/p.home.dart';
 
-class Addview extends StatefulWidget {
-  const Addview({Key? key});
+import '../Parent/p.home.dart';
+import 'a&u.dart';
+
+class Update2 extends StatefulWidget {
+  const Update2({super.key});
 
   @override
-  State<Addview> createState() => _AddviewState();
+  State<Update2> createState() => _Update2State();
 }
 
-class _AddviewState extends State<Addview> {
+class _Update2State extends State<Update2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../home.dart';
+
+import '../Parent/p.home.dart';
 import 'forgotten.dart';
 
 class Loginp extends StatefulWidget {
@@ -81,7 +82,7 @@ class _LoginpState extends State<Loginp> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Home()),
+                                MaterialPageRoute(builder: (context) => Phome()),
                               );
                             },
                             child: Center(

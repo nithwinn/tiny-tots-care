@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_tots_care/home.dart';
+import 'package:tiny_tots_care/Admin/category.dart';
+import 'package:tiny_tots_care/DomainAmin.dart';
 
 import 'forgotten.dart';
 
@@ -81,7 +82,7 @@ SizedBox(height: 15,),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => Category()),
                 );
               },
               child: Center(

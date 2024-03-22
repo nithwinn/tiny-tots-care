@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tiny_tots_care/Parent/p.home.dart';
+import 'package:tiny_tots_care/Admin/loginp.dart';
+
 
 class Parentregistration2 extends StatefulWidget {
   const Parentregistration2({Key? key});
@@ -273,7 +274,7 @@ class _Parentregistration2State extends State<Parentregistration2> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Phome()),
+                    MaterialPageRoute(builder: (context) => Loginp()),
                   );
                 },
                 child: Center(

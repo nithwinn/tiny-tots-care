@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../home.dart';
+import '../DomainAmin.dart';
 import 'forgotten.dart';
 
 class Admin extends StatefulWidget {

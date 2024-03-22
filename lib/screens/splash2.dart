@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Admin/login.dart';
-import '../home.dart';
+import '../DomainAmin.dart';
 
 
 class Splash2 extends StatefulWidget {

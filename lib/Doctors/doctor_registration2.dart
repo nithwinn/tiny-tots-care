@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Admin/logind.dart';
 
 class Doctorregistration2 extends StatefulWidget {
   const Doctorregistration2({super.key});
@@ -64,7 +65,7 @@ class _Doctorregistration2State extends State<Doctorregistration2> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Doctorregistration2()),
+            MaterialPageRoute(builder: (context) => Logind()),
           );
         },
         child: Center(

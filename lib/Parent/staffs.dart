@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'p.home.dart';
+
 class Staffs extends StatefulWidget {
   const Staffs({Key? key}) : super(key: key);
 
@@ -129,7 +131,12 @@ class _StaffsState extends State<Staffs> {
                 IconButton(
                   icon: Icon(Icons.home),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Phome()),
+                    );
+                  },
                 ),
                 Text("Home"),
               ],
