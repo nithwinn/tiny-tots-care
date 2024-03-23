@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Admin/addview.dart';
 
+import '../DomainAmin.dart';
+
 class Addactivity extends StatefulWidget {
   const Addactivity({Key? key});
 
@@ -111,7 +113,13 @@ class _AddactivityState extends State<Addactivity> {
                     IconButton(
                       icon: Icon(Icons.home),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Home()),
+                        );
+                      },
                     ),
                     Text("Home"),
                   ],

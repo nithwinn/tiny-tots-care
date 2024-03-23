@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Admin/addactivity.dart';
 
+import '../DomainAmin.dart';
+
 class Activity extends StatefulWidget {
   const Activity({Key? key});
 
@@ -88,7 +90,14 @@ class _ActivityState extends State<Activity> {
                 IconButton(
                   icon: Icon(Icons.home),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Home()
+                      ),
+                    );
+                  },
                 ),
                 Text("Home"),
               ],

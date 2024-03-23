@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class Staffs extends StatefulWidget {
@@ -169,7 +170,13 @@ class _StaffsState extends State<Staffs> {
                 IconButton(
                   icon: Icon(Icons.person),
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ParentProfile()),
+                    );
+                  },
                 ),
                 Text("Profile"),
               ],

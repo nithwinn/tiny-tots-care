@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Parent/doctor_booking3.dart';
 
 import '../DomainAmin.dart';
+import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class DoctorBooking extends StatefulWidget {
@@ -285,7 +286,13 @@ class _DoctorBookingState extends State<DoctorBooking> {
                     IconButton(
                       icon: Icon(Icons.person),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ParentProfile()),
+                        );
+                      },
                     ),
                     Text("Profile"),
                   ],

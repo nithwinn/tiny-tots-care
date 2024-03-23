@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Admin/adminBabysitter_edit.dart';
 import 'package:tiny_tots_care/Admin/adminDproedit.dart';
+import 'package:tiny_tots_care/Admin/adminP_edit.dart';
 import 'package:tiny_tots_care/Admin/adminactivity.dart';
 import 'package:tiny_tots_care/Admin/login.dart';
 import 'package:tiny_tots_care/Parent/parent_registration.dart';
@@ -51,7 +53,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Parentregistration()),
+                        builder: (context) => AdminParent()),
                   );
                 },
                 child: Text(
@@ -93,7 +95,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Babysittersregistration()),
+                        builder: (context) => AdminBabysitterEdit()),
                   );
                 },
                 child: Text(

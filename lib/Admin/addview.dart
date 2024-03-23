@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Admin/a&u.dart';
+import '../DomainAmin.dart';
 import '../Parent/p.home.dart';
 
 class Addview extends StatefulWidget {
@@ -25,7 +26,6 @@ class _AddviewState extends State<Addview> {
               ),
             ),
           ),
-
         ),
       ),
       body: SingleChildScrollView(
@@ -78,18 +78,21 @@ class _AddviewState extends State<Addview> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AddandUpdate()),
+                          MaterialPageRoute(
+                              builder: (context) => AddandUpdate()),
                         );
                       },
                     ),
-                    SizedBox(height: 500,),
+                    SizedBox(
+                      height: 500,
+                    ),
                     IconButton(
                       icon: Icon(Icons.home),
                       color: Colors.black,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Phome()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                       },
                     ),

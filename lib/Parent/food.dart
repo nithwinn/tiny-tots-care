@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class Food extends StatefulWidget {
@@ -390,7 +391,13 @@ class _FoodState extends State<Food> {
                             IconButton(
                               icon: Icon(Icons.person),
                               color: Colors.black,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ParentProfile()),
+                                );
+                              },
                             ),
                             Text("Profile"),
                           ],

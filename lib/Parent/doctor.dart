@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Parent_profile.dart';
 import 'doctor_booking.dart';
 import 'doctor_booking2.dart';
 import 'p.home.dart';
@@ -186,7 +187,13 @@ class _DoctorState extends State<Doctor> {
                     IconButton(
                       icon: Icon(Icons.person),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ParentProfile()),
+                        );
+                      },
                     ),
                     Text("Profile"),
                   ],

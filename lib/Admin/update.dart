@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Admin/update2.dart';
 
+import '../DomainAmin.dart';
+
 class Update extends StatefulWidget {
   const Update({Key? key});
 
@@ -147,7 +149,13 @@ class _UpdateState extends State<Update> {
           IconButton(
             icon: Icon(Icons.home),
             color: Colors.black,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Home()),
+              );
+            },
           ),
           Text("Home"),
         ],

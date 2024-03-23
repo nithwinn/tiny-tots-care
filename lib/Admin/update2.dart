@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../DomainAmin.dart';
 import '../Parent/p.home.dart';
 import 'a&u.dart';
 
@@ -26,7 +27,6 @@ class _Update2State extends State<Update2> {
               ),
             ),
           ),
-
         ),
       ),
       body: SingleChildScrollView(
@@ -79,18 +79,21 @@ class _Update2State extends State<Update2> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AddandUpdate()),
+                          MaterialPageRoute(
+                              builder: (context) => AddandUpdate()),
                         );
                       },
                     ),
-                    SizedBox(height: 500,),
+                    SizedBox(
+                      height: 500,
+                    ),
                     IconButton(
                       icon: Icon(Icons.home),
                       color: Colors.black,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Phome()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                       },
                     ),

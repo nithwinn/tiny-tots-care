@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class DoctorBooking3 extends StatefulWidget {
@@ -163,7 +164,13 @@ class _DoctorBooking3State extends State<DoctorBooking3> {
                       IconButton(
                         icon: Icon(Icons.person),
                         color: Colors.black,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ParentProfile()),
+                          );
+                        },
                       ),
                       Text("Profile"),
                     ],

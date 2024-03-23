@@ -19,7 +19,7 @@ class _ParentregistrationState extends State<Parentregistration> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        toolbarHeight: 50, // Set the height of the AppBar
+        toolbarHeight: 50,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
