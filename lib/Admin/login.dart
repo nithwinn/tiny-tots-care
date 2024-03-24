@@ -97,7 +97,17 @@ SizedBox(height: 15,),
 
       ),
             SizedBox(height: 25.0,),
-            Center(child: Text("create account?"))
+            Center(child: TextButton(
+              child: Text(
+                "Create an account",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+              },
+            ),)
     ]
     ),
             )

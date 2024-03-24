@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Parent/Parent_profile.dart';
+import 'package:tiny_tots_care/Parent/child_profile.dart';
 import 'package:tiny_tots_care/Parent/doctor.dart';
 import 'package:tiny_tots_care/Parent/staffs.dart';
 
@@ -340,7 +341,13 @@ class _PhomeState extends State<Phome> {
                     IconButton(
                       icon: Icon(Icons.child_care),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BabyProfile()),
+                        );
+                      },
                     ),
                     Text("My child"),
                   ],

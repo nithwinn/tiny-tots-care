@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Parent/child_profile.dart';
 
 import 'Parent_profile.dart';
 import 'doctor_booking.dart';
@@ -176,7 +177,13 @@ class _DoctorState extends State<Doctor> {
                     IconButton(
                       icon: Icon(Icons.child_care),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BabyProfile()),
+                        );
+                      },
                     ),
                     Text("My child"),
                   ],
