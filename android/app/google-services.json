@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "97982959350",
+    "project_id": "tiny-toe-care",
+    "storage_bucket": "tiny-toe-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97982959350:android:1b68166f5797a5670526d7",
+        "android_client_info": {
+          "package_name": "com.example.tiny_tots_care"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCroaRg8XteDFI96rB4YHh5mt4zoX_EwWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
