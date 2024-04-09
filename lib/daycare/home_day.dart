@@ -59,18 +59,7 @@ class _MySchoolState extends State<MySchool> {
             ),
           ),
         ),
-        SizedBox(
-          height: 60,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 90),
-          child: Center(
-            child: Container(
-              child: Image.asset(
-                  'assets/“The soul is healed by being with children”.png'),
-            ),
-          ),
-        ),
+        
         SizedBox(
           height: 90,
         ),
@@ -83,25 +72,36 @@ class _MySchoolState extends State<MySchool> {
               );
             });
           },
-          child: Container(
-            decoration: BoxDecoration(
-                color: Color(0xFFF1D2D2),
-                borderRadius: BorderRadius.circular(10)),
-            height: 60,
-            width: 350,
-            child: Center(
-                child: Text(
-              "My Staff",
-              style: TextStyle(
-                color: Colors.white,
-                fontStyle: FontStyle.normal,
-                fontSize: 30,
-              ),
-            )),
-          ),
+          child:Container(
+  decoration: BoxDecoration(
+    color: Color.fromARGB(255, 239, 198, 198),
+    borderRadius: BorderRadius.circular(5),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+  ),
+  height: 70,
+  width: 350,
+  child: Center(
+    child: Text(
+      "MY STAFFS",
+      style: TextStyle(
+        color: const Color.fromARGB(255, 0, 0, 0),
+        fontStyle: FontStyle.normal,
+        fontSize: 30,
+      ),
+    ),
+  ),
+)
+
         ),
         SizedBox(
-          height: 20,
+          height: 30,
         ),
         GestureDetector(
           onTap: () {
@@ -114,15 +114,24 @@ class _MySchoolState extends State<MySchool> {
           },
           child: Container(
             decoration: BoxDecoration(
-                color: Color(0xFFCDF2C7),
-                borderRadius: BorderRadius.circular(10)),
-            height: 60,
+                color: Color.fromARGB(255, 192, 234, 186),
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+                ),
+            height: 70,
             width: 350,
             child: Center(
                 child: Text(
-              "Parents Request",
+              "PARENT REQUEST",
               style: TextStyle(
-                color: Colors.white,
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontStyle: FontStyle.normal,
                 fontSize: 30,
               ),
@@ -130,7 +139,7 @@ class _MySchoolState extends State<MySchool> {
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 30,
         ),
         GestureDetector(
           onTap: () {
@@ -143,15 +152,24 @@ class _MySchoolState extends State<MySchool> {
           },
           child: Container(
             decoration: BoxDecoration(
-                color: Color(0xFFCFC9F4),
-                borderRadius: BorderRadius.circular(10)),
-            height: 60,
+                color: Color.fromARGB(255, 199, 193, 237),
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+                ),
+            height: 70,
             width: 350,
             child: Center(
                 child: Text(
-              "Children",
+              "CHILDREN",
               style: TextStyle(
-                color: Colors.white,
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontStyle: FontStyle.normal,
                 fontSize: 30,
               ),
@@ -159,7 +177,7 @@ class _MySchoolState extends State<MySchool> {
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 30,
         ),
         GestureDetector(
           onTap: () {
@@ -173,14 +191,23 @@ class _MySchoolState extends State<MySchool> {
           child: Container(
             decoration: BoxDecoration(
                 color: Color(0xFFF2D785),
-                borderRadius: BorderRadius.circular(10)),
-            height: 60,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 3), // changes position of shadow
+      ),
+    ],
+                ),
+            height: 70,
             width: 350,
             child: Center(
                 child: Text(
-              "Activity",
+              "ACTIVITY",
               style: TextStyle(
-                color: Colors.white,
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontStyle: FontStyle.normal,
                 fontSize: 30,
               ),

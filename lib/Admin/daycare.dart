@@ -15,8 +15,33 @@ class _DayCare1State extends State<DayCare1> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: AppBar(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF61EDDC), Color(0xFFFFFFFF)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.only(left: 70,top: 20),
+              child: Text(
+                'DAY CARE',
+                style: TextStyle(
+                  color: Color(0xFF000000),
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('doctors').snapshots(),
+        stream: FirebaseFirestore.instance.collection('daycare').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -34,46 +59,40 @@ class _DayCare1State extends State<DayCare1> {
             itemCount: documents.length,
             itemBuilder: (context, index) {
               final Map<String, dynamic> data = documents[index].data() as Map<String, dynamic>;
-              return Container(
-                height: size.height,
-                width: size.width,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Center(
-                        child: Text(
-                          "DAY CARE",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 40,
-                          ),
-                        ),
+              return Card(
+                // elevation: 5,
+                margin: EdgeInsets.all(10),
+                child: ListTile(
+                  title: Text(data['preschoolName'] ?? 'No Name',style: TextStyle(fontWeight: FontWeight.bold),),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Pre school Address: ${data['preschoolAddress'] ?? 'Unknown'}'),
+                      Text('Email: ${data['email'] ?? 'Unknown'}'), 
+                       Text('Phone number: ${data['phone'] ?? 'Unknown'}'),
+                   
+                    ],
+                  ), trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                     
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          String activityId = documents[index].id;
+                          FirebaseFirestore.instance
+                              .collection('daycare')
+                              .doc(activityId)
+                              .delete()
+                              .then((_) {
+                            print('Document successfully deleted!');
+                          }).catchError((error) {
+                            print('Error deleting document: $error');
+                          });
+                        },
                       ),
-                    ),
-                    SizedBox(height: 30),
-                    buildDaycareRow(data['name']),
-                    Divider(thickness: 0.5, color: Colors.black),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 460, left: 0),
-                      child: Column(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.home),
-                            color: Colors.black,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Home()),
-                              );
-                            },
-                          ),
-                          Text("Home"),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
@@ -83,22 +102,4 @@ class _DayCare1State extends State<DayCare1> {
     );
   }
 
-  Widget buildDaycareRow(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30, left: 20, right: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-        ],
-      ),
-    );
-  }
 }

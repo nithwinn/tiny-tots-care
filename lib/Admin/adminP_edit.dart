@@ -101,17 +101,45 @@ class _AdminParentState extends State<AdminParent> {
                           SizedBox(width: 55,),
                           
                           IconButton(
-                            icon: Icon(Icons.delete_outline_outlined),
-                            color: Colors.black,
-                            onPressed: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => AdminDprofileEdit(),
-                              //   ),
-                              // );
-                            },
-                          ),
+  icon: Icon(Icons.delete_outline_outlined),
+  color: Colors.black,
+  onPressed: () {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Delete Parent"),
+          content: Text("Are you sure you want to delete this parent?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); 
+              },
+              child: Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                FirebaseFirestore.instance
+                    .collection('parentregister')
+                    .doc(data['ParentId']) 
+                    .delete()
+                    .then((value) {
+                  print("Parent deleted successfully!");
+                }).catchError((error) {
+                   print("Failed to delete parent: $error");
+                });
+
+                Navigator.of(context).pop();
+              },
+              child: Text("Delete"),
+            ),
+          ],
+        );
+      },
+    );
+  },
+),
+
                         ],
                       ),
                     ],

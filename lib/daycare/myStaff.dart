@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/daycare/dayanastf.dart';
-
 import 'package:tiny_tots_care/daycare/submit.dart';
 
 class MyStaFF extends StatefulWidget {
@@ -84,7 +83,7 @@ class _MyStaFFState extends State<MyStaFF> {
                             offset: Offset(0, 1),
                           ),
                         ],
-                        color: const Color.fromARGB(255, 212, 207, 207),
+                        color: Color.fromARGB(255, 152, 193, 222),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       height: 70,
@@ -92,38 +91,28 @@ class _MyStaFFState extends State<MyStaFF> {
                       child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: 50),
                             child: Text(
                               data['staffName'],
-                              style: TextStyle(fontSize: 40),
+                              style: TextStyle(color: Colors.white,fontSize: 35),
                             ),
                           ),
                           SizedBox(
                             width: 120,
                           ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              shape: RoundedRectangleBorder(),
-                              backgroundColor:
-                                  Color.fromARGB(255, 27, 172, 238),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.all(6.0),
-                              textStyle: const TextStyle(fontSize: 15),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                             
                             ),
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      Home_day(StaffId: data['StaffId']),
+                                  builder: (context) => Home_day(StaffId: data['StaffId']),
                                 ),
                               );
                             },
-                            child: Center(
-                              child: Text(
-                                "View",
-                              ),
-                            ),
+                            child: Text("View",style: TextStyle(color: Color.fromARGB(255, 55, 194, 59)),),
                           ),
                         ],
                       ),

@@ -203,11 +203,11 @@ class _StaffsState extends State<Staffs> {
                   icon: Icon(Icons.person),
                   color: Colors.black,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ParentProfile()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => ParentProfile()),
+                    // );
                   },
                 ),
                 Text("Profile"),

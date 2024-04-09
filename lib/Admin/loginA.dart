@@ -34,11 +34,16 @@ class _LoginAState extends State<LoginA> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/login.png"),
-                fit: BoxFit.cover,
+          Center(
+            child: Container(
+              height: 400,
+              width: 380,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(45),
+                image: DecorationImage(
+                  image: AssetImage("assets/out.png"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -53,27 +58,30 @@ class _LoginAState extends State<LoginA> {
                   Center(
                     child: Text(
                       "LOGIN",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(fontSize: 35,color: const Color.fromARGB(255, 249, 249, 249)),
                     ),
                   ),
                   SizedBox(
                     height: 50,
                   ),
-                  TextFormField(
-                    controller: emailController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter Email Id';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText: "email",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                    ),
-                  ),
+                TextFormField(
+  controller: emailController,
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Enter Email Id';
+    }
+    return null;
+  },
+  decoration: InputDecoration(
+    fillColor: Colors.white, 
+    filled: true, 
+    hintText: "Email",
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+  ),
+),
+
                   SizedBox(
                     height: 15,
                   ),
@@ -87,6 +95,8 @@ class _LoginAState extends State<LoginA> {
                     },
                     obscureText: true,
                     decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
                       hintText: "Password",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -109,6 +119,7 @@ class _LoginAState extends State<LoginA> {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
+                            
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.all(6.0),
                             textStyle: const TextStyle(fontSize: 25),

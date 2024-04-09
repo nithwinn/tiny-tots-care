@@ -165,11 +165,11 @@ class _DoctorBooking3State extends State<DoctorBooking3> {
                         icon: Icon(Icons.person),
                         color: Colors.black,
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ParentProfile()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => ParentProfile()),
+                          // );
                         },
                       ),
                       Text("Profile"),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../DomainAmin.dart';
 import '../Parent/p.home.dart';
-import 'a&u.dart';
+
 
 class Update2 extends StatefulWidget {
   const Update2({super.key});

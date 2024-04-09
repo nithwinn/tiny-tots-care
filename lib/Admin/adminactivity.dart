@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tiny_tots_care/Admin/a&u.dart';
 import 'package:tiny_tots_care/Admin/addactivity.dart';
 
 import '../DomainAmin.dart';
@@ -28,7 +28,7 @@ class _ActivityState extends State<Activity> {
             ),
           ),
           title: Padding(
-            padding: const EdgeInsets.only(left: 75,top: 20),
+            padding: const EdgeInsets.only(left: 75, top: 20),
             child: Text(
               'Activity',
               style: TextStyle(
@@ -40,77 +40,143 @@ class _ActivityState extends State<Activity> {
           ),
         ),
       ),
-      body: Column( // Wrap the Padding widgets in a Column
-        children: [
-          Center(
-            child: Container(
-              height: 50,
-              width: 180,
-              decoration: BoxDecoration(border: Border.all()),
-              child: TextButton(
-                child: Text(
-                  "ADD",
-                  style: TextStyle(
-                    backgroundColor: Colors.white10,
-                    color: Colors.black,
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('activity').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
+          // Data snapshot is ready
+          final List<DocumentSnapshot> documents = snapshot.data!.docs;
+          return ListView.builder(
+            itemCount: documents.length,
+            itemBuilder: (context, index) {
+              final Map<String, dynamic> data =
+                  documents[index].data() as Map<String, dynamic>;
+              return Card(
+                elevation: 5,
+                margin: EdgeInsets.all(10),
+                child: ListTile(
+                  title: Text(data['name'] ?? 'No Name'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Time: ${data['time'] ?? 'Unknown'}'),
+                      Text('Activity: ${data['activity'] ?? 'Unknown'}'),
+                    ],
                   ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Addactivity()),
-                  );
-                },
-              ),
-            ),
-          ),
-          SizedBox(height: 15,),
-          Center(
-            child: Container(
-              height: 50,
-              width: 180,
-              decoration: BoxDecoration(border: Border.all()),
-              child: TextButton(
-                child: Text(
-                  "Update&Edit",
-                  style: TextStyle(
-                    backgroundColor: Colors.white10,
-                    color: Colors.black,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AddandUpdate()),
-                  );
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 530,left: 10),
-            child: Column(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.home),
-                  color: Colors.black,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Home()
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          String activityId = documents[index].id;
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              TextEditingController nameController =
+                                  TextEditingController(text: data['name']);
+                              TextEditingController timeController =
+                                  TextEditingController(text: data['time']);
+                              TextEditingController activityController =
+                                  TextEditingController(text: data['activity']);
+                              return AlertDialog(
+                                title: Text('Edit Activity'),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextFormField(
+                                      controller: nameController,
+                                      decoration:
+                                          InputDecoration(labelText: 'Name'),
+                                    ),
+                                    TextFormField(
+                                      controller: timeController,
+                                      decoration:
+                                          InputDecoration(labelText: 'Time'),
+                                    ),
+                                    TextFormField(
+                                      controller: activityController,
+                                      decoration: InputDecoration(
+                                          labelText: 'Activity'),
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      FirebaseFirestore.instance
+                                          .collection('activity')
+                                          .doc(activityId)
+                                          .update({
+                                        'name': nameController.text,
+                                        'time': timeController.text,
+                                        'activity': activityController.text,
+                                      }).then((_) {
+                                        print('Document successfully updated!');
+                                        Navigator.pop(context); 
+                                      }).catchError((error) {
+                                        print(
+                                            'Error updating document: $error');
+                                      });
+                                    },
+                                    child: Text('Save'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
-                    );
-                  },
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          String activityId = documents[index].id;
+                          FirebaseFirestore.instance
+                              .collection('activity')
+                              .doc(activityId)
+                              .delete()
+                              .then((_) {
+                            print('Document successfully deleted!');
+                          }).catchError((error) {
+                            print('Error deleting document: $error');
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                Text("Home"),
-              ],
-            ),
-          ),
-        ],
+              );
+            },
+          );
+        },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Addactivity(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

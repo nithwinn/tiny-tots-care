@@ -29,11 +29,11 @@ class _Activity1State extends State<Activity1> {
             ),
           ),
           Positioned(
-            top: 10,
+            top: 1,
             left: 0,
             right: 0,
             child: Container(
-              height: 180,
+              height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(45.0),
@@ -50,7 +50,7 @@ class _Activity1State extends State<Activity1> {
             ),
           ),
           Positioned(
-            top: 50,
+            top: 20,
             left: 25,
             bottom: 200,
             child: Container(
@@ -182,11 +182,11 @@ class _Activity1State extends State<Activity1> {
                       icon: Icon(Icons.person),
                       color: Colors.black,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ParentProfile()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => ParentProfile()),
+                        // );
                       },
                     ),
                     Text("Profile"),

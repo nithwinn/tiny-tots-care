@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tiny_tots_care/Admin/addview.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:tiny_tots_care/Admin/adminactivity.dart';
 import '../DomainAmin.dart';
 
 class Addactivity extends StatefulWidget {
@@ -11,6 +12,31 @@ class Addactivity extends StatefulWidget {
 }
 
 class _AddactivityState extends State<Addactivity> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
+  final TextEditingController _activityController = TextEditingController();
+
+ Future<void> _addActivityToFirebase() async {
+  try {
+    String activityId = FirebaseFirestore.instance.collection('activity').doc().id;
+
+    await FirebaseFirestore.instance.collection('activity').doc(activityId).set({
+      'activityId': activityId,
+      'name': _nameController.text.trim(),
+      'time': _timeController.text.trim(),
+      'activity': _activityController.text.trim(),
+    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Activity()),
+    );
+  } catch (error) {
+    print('Error adding activity: $error');
+    }
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +74,7 @@ class _AddactivityState extends State<Addactivity> {
               ),
               SizedBox(height: 2.0),
               TextFormField(
+                controller: _nameController,
                 decoration: InputDecoration(
                   hintText: "Name",
                   border: OutlineInputBorder(
@@ -55,13 +82,14 @@ class _AddactivityState extends State<Addactivity> {
                   ),
                 ),
               ),
-              SizedBox(height: 10), // Added SizedBox for spacing
+              SizedBox(height: 10), 
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text("Time", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
               TextFormField(
+                controller: _timeController,
                 decoration: InputDecoration(
                   hintText: "Time",
                   border: OutlineInputBorder(
@@ -69,13 +97,14 @@ class _AddactivityState extends State<Addactivity> {
                   ),
                 ),
               ),
-              SizedBox(height: 10), // Added SizedBox for spacing
+              SizedBox(height: 10), 
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text("Activity", style: TextStyle(color: Colors.black)),
               ),
               SizedBox(height: 2.0),
               TextFormField(
+                controller: _activityController,
                 decoration: InputDecoration(
                   hintText: "Activity",
                   border: OutlineInputBorder(
@@ -86,7 +115,7 @@ class _AddactivityState extends State<Addactivity> {
               SizedBox(height: 35),
               Container(
                 height: 50,
-                width: double.infinity, // Adjusted width
+                width: double.infinity, 
                 decoration: BoxDecoration(border: Border.all()),
                 child: TextButton(
                   child: Text(
@@ -98,16 +127,11 @@ class _AddactivityState extends State<Addactivity> {
                       color: Colors.black,
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Addview()),
-                    );
-                  },
+                  onPressed: _addActivityToFirebase,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 300,left: 10),
+                padding: const EdgeInsets.only(top: 300, left: 10),
                 child: Column(
                   children: [
                     IconButton(
@@ -116,8 +140,7 @@ class _AddactivityState extends State<Addactivity> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => Home()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                       },
                     ),
