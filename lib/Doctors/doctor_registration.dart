@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tiny_tots_care/Admin/logind.dart';
+import 'package:tiny_tots_care/Doctors/dhome.dart';
 
 class DoctorRegistration extends StatefulWidget {
   const DoctorRegistration({Key? key}) : super(key: key);
@@ -270,6 +271,11 @@ class _DoctorRegistrationState extends State<DoctorRegistration> {
       _addressController.clear();
       _officeaddressController.clear();
       _experienceController.clear();
+
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Dhome()),
+    );
     }
   }
 

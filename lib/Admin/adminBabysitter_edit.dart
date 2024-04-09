@@ -88,13 +88,22 @@ class _AdminBabysitterEditState extends State<AdminBabysitterEdit> {
                       Row(
                         children: [
                           Center(
-                            child: Text(
-                              data['name'],
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.black,
-                              ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  data['name'],
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  data['idproof']
+                                  ),
+                                  Text( data['qualification'])
+                              ],
                             ),
+                            
                           ),
                           SizedBox(width: 55,),
                           
@@ -102,13 +111,17 @@ class _AdminBabysitterEditState extends State<AdminBabysitterEdit> {
                             icon: Icon(Icons.delete_outline_outlined),
                             color: Colors.black,
                             onPressed: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => AdminDprofileEdit(),
-                              //   ),
-                              // );
-                            },
+                              String activityId = documents[index].id;
+                          FirebaseFirestore.instance
+                              .collection('babysitters')
+                              .doc(activityId)
+                              .delete()
+                              .then((_) {
+                            print('Document successfully deleted!');
+                          }).catchError((error) {
+                            print('Error deleting document: $error');
+                          });
+                        },
                           ),
                         ],
                       ),

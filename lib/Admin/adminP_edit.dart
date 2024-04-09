@@ -90,12 +90,17 @@ class _AdminParentState extends State<AdminParent> {
                       Row(
                         children: [
                           Center(
-                            child: Text(
-                              data['parentName'],
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.black,
-                              ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  data['parentName'],
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(data['phoneNumber'])
+                              ],
                             ),
                           ),
                           SizedBox(width: 55,),

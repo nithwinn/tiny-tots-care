@@ -61,7 +61,7 @@ class _AdminDoctorState extends State<AdminDoctor> {
               final Map<String, dynamic> data =
                   documents[index].data() as Map<String, dynamic>;
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -97,12 +97,18 @@ class _AdminDoctorState extends State<AdminDoctor> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  data['name'],
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.black,
-                                  ),
+                                Column(
+                                  children: [
+                                    Text(
+                                      data['name'],
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(data['specialization']),
+                                    Text(data['officeaddress'])
+                                  ],
                                 ),
                               ],
                             ),
@@ -111,101 +117,91 @@ class _AdminDoctorState extends State<AdminDoctor> {
                             icon: Icon(Icons.delete_outline_outlined),
                             color: Colors.black,
                             onPressed: () {
-                              // Perform delete operation here
-                            },
+                              String activityId = documents[index].id;
+                          FirebaseFirestore.instance
+                              .collection('doctors')
+                              .doc(activityId)
+                              .delete()
+                              .then((_) {
+                            print('Document successfully deleted!');
+                          }).catchError((error) {
+                            print('Error deleting document: $error');
+                          });
+                        },
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: 25),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(55),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1.5,
-                            blurRadius: 1,
-                            offset: Offset(0, 1),
-                          ),
-                        ],
-                        color: Color.fromARGB(255, 255, 253, 253),
-                      ),
-                      child: Row(
-                        children: [
-                          Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Text(
-                                  "Name: Jenifer",
-                                  style: TextStyle(fontSize: 15),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(width: 35),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Column(
-                                children: [
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: Color.fromARGB(
-                                          255, 30, 227, 19),
-                                      foregroundColor: Colors.white,
-                                      padding: const EdgeInsets.all(6.0),
-                                      textStyle:
-                                          const TextStyle(fontSize: 15),
-                                    ),
-                                    onPressed: () {
-                                      // Perform accept operation here
-                                    },
-                                    child: Text("Accept"),
-                                  ),
-                                  SizedBox(height: 10),
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                      backgroundColor: Color(0xFFF14668),
-                                      foregroundColor: Colors.white,
-                                      padding: const EdgeInsets.all(6.0),
-                                      textStyle:
-                                          const TextStyle(fontSize: 15),
-                                    ),
-                                    onPressed: () {
-                                      // Perform reject operation here
-                                    },
-                                    child: Text("Reject"),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.only(top: 450,left: 150),
-                  child: Column(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.home),
-                        color: Colors.black,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Home()
-                            )
-                                );
-                        }
-                      )
-                        ],
-                      ),
-                  ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //     shape: BoxShape.rectangle,
+                    //     borderRadius: BorderRadius.circular(55),
+                    //     boxShadow: [
+                    //       BoxShadow(
+                    //         color: Colors.grey.withOpacity(0.5),
+                    //         spreadRadius: 1.5,
+                    //         blurRadius: 1,
+                    //         offset: Offset(0, 1),
+                    //       ),
+                    //     ],
+                    //     color: Color.fromARGB(255, 255, 253, 253),
+                    //   ),
+                    //   child: Row(
+                    //     children: [
+                    //       Column(
+                    //         children: [
+                    //           Padding(
+                    //             padding: const EdgeInsets.all(15.0),
+                    //             child: Text(
+                    //               "Name: Jenifer",
+                    //               style: TextStyle(fontSize: 15),
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //       SizedBox(width: 35),
+                    //       Row(
+                    //         crossAxisAlignment: CrossAxisAlignment.end,
+                    //         children: [
+                    //           Column(
+                    //             children: [
+                    //               TextButton(
+                    //                 style: TextButton.styleFrom(
+                    //                   backgroundColor: Color.fromARGB(
+                    //                       255, 30, 227, 19),
+                    //                   foregroundColor: Colors.white,
+                    //                   padding: const EdgeInsets.all(6.0),
+                    //                   textStyle:
+                    //                       const TextStyle(fontSize: 15),
+                    //                 ),
+                    //                 onPressed: () {
+                    //                   // Perform accept operation here
+                    //                 },
+                    //                 child: Text("Accept"),
+                    //               ),
+                    //               SizedBox(height: 10),
+                    //               TextButton(
+                    //                 style: TextButton.styleFrom(
+                    //                   backgroundColor: Color(0xFFF14668),
+                    //                   foregroundColor: Colors.white,
+                    //                   padding: const EdgeInsets.all(6.0),
+                    //                   textStyle:
+                    //                       const TextStyle(fontSize: 15),
+                    //                 ),
+                    //                 onPressed: () {
+                    //                   // Perform reject operation here
+                    //                 },
+                    //                 child: Text("Reject"),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                   
                   ],
                 ),
               );

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_tots_care/Admin/logind.dart';
 import 'package:tiny_tots_care/Parent/loginp.dart';
 import 'package:tiny_tots_care/Parent/parent_registration2.dart';
 import 'package:tiny_tots_care/Parent/parentregister.dart';
@@ -121,7 +122,7 @@ class _CategoryState extends State<Category> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DoctorRegistration()),
+                          builder: (context) => Logind()),
                     );
                 },
                 child: Container(
