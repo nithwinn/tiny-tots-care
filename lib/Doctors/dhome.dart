@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tiny_tots_care/Doctors/dhome2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dhome extends StatefulWidget {
   const Dhome({Key? key});
@@ -10,6 +11,20 @@ class Dhome extends StatefulWidget {
 }
 
 class _DhomeState extends State<Dhome> {
+  late String doctorId;
+
+  @override
+  void initState() {
+    super.initState();
+    getDoctorId();
+  }
+
+  Future<void> getDoctorId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    doctorId = prefs.getString('doctorId') ?? '';
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +50,11 @@ class _DhomeState extends State<Dhome> {
         ),
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('doctors').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        stream: FirebaseFirestore.instance
+            .collection('doctors')
+            .doc(doctorId) 
+            .snapshots(),
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
@@ -47,65 +65,68 @@ class _DhomeState extends State<Dhome> {
               child: Text('Error: ${snapshot.error}'),
             );
           }
-          final List<DocumentSnapshot> documents = snapshot.data!.docs;
-          return ListView.builder(
-            itemCount: documents.length,
-            itemBuilder: (context, index) {
-              final Map<String, dynamic> data = documents[index].data() as Map<String, dynamic>;
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Dhome2()),
-                        );
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 17,
+          final Map<String, dynamic>? data = snapshot.data?.data() as Map<String, dynamic>?;
+
+          if (data == null || data.isEmpty) {
+            return Center(
+              child: Text('No data found for the current doctor'),
+            );
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Dhome2()),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 17,
+                          ),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 4,
+                                offset: Offset(0, 3),
                               ),
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 4,
-                                    offset: Offset(0, 3),
+                            ],
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/doctor1.png",
+                                    height: 100,
+                                    width: 150,
                                   ),
                                 ],
-                                color: Colors.white,
                               ),
-                              child: Row(
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [
-                                      Image.asset(
-                                        "assets/doctor1.png",
-                                        height: 100,
-                                        width: 150,
-                                      ),
-                                    ],
+                                  Text(
+                                    "Dr.${data['name']}",
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Dr.${data['name']}",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
                                       Text(
                                         "VisitingTime:${data['visiting time']}",
                                         style: TextStyle(
@@ -163,13 +184,7 @@ class _DhomeState extends State<Dhome> {
                                       ),
                                     ],
                                   ),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.all(55.0),
-                                  //   child: Text(
-                                  //     "Name: ${data['name']}\nDate: ${data['date']}",
-                                  //     style: TextStyle(fontSize: 15),
-                                  //   ),
-                                  // ),
+                                
                                 ],
                               ),
                             ),
@@ -183,52 +198,11 @@ class _DhomeState extends State<Dhome> {
                         ),
                       ),
                     ),
-                  //   SizedBox(
-                  //     height: 300,
-                  //   ),
-                  //   Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //     children: [
-                  //       Column(
-                  //         children: [
-                  //           IconButton(
-                  //             icon: Icon(Icons.home),
-                  //             color: Colors.black,
-                  //             onPressed: () {
-                  //               Navigator.push(
-                  //                 context,
-                  //                 MaterialPageRoute(builder: (context) => Dhome()),
-                  //               );
-                  //             },
-                  //           ),
-                  //           Text("Home"),
-                  //         ],
-                  //       ),
-                  //       Column(
-                  //         children: [
-                  //           IconButton(
-                  //             icon: Icon(Icons.person),
-                  //             color: Colors.black,
-                  //             onPressed: () {
-                  //               // Navigator.push(
-                  //               //   context,
-                  //               //   MaterialPageRoute(
-                  //               //       builder: (context) => Dhome2()),
-                  //               // );
-                  //             },
-                  //           ),
-                  //           Text("Profile"),
-                  //         ],
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ],
+                 
                   ]
                 ),
               );
             },
-          );
-        },
       ),
     );
   }

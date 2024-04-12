@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Foodmenu extends StatefulWidget {
-  const Foodmenu({super.key});
+  const Foodmenu({Key? key});
 
   @override
   State<Foodmenu> createState() => _FoodmenuState();
@@ -10,6 +10,8 @@ class Foodmenu extends StatefulWidget {
 class _FoodmenuState extends State<Foodmenu> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -23,238 +25,258 @@ class _FoodmenuState extends State<Foodmenu> {
                     children: [
                       dateWidget(
                         title: "Mon\n1",
+                        size: screenWidth * 0.1,
                       ),
-        SizedBox(width: 4,),
-        dateWidget(
-        title: "Tue\n2",
-      ),
-                      SizedBox(width: 4,),
-      dateWidget(
-        title: "Wed\n3",
-      ),
-                      SizedBox(width: 4,),
+                      SizedBox(width: screenWidth * 0.02),
                       dateWidget(
-      title: "Thu\n4",
-    ),
-                      SizedBox(width: 4,),
+                        title: "Tue\n2",
+                        size: screenWidth * 0.1,
+                      ),
+                      SizedBox(width: screenWidth * 0.02),
                       dateWidget(
-      title: "Fri\n5",
-    ),
-                      SizedBox(width: 4,),
+                        title: "Wed\n3",
+                        size: screenWidth * 0.1,
+                      ),
+                      SizedBox(width: screenWidth * 0.02),
                       dateWidget(
-      title: "Sat\n6",
-    ),
-                      SizedBox(width: 4,),
+                        title: "Thu\n4",
+                        size: screenWidth * 0.1,
+                      ),
+                      SizedBox(width: screenWidth * 0.02),
+                      dateWidget(
+                        title: "Fri\n5",
+                        size: screenWidth * 0.1,
+                      ),
+                      SizedBox(width: screenWidth * 0.02),
+                      dateWidget(
+                        title: "Sat\n6",
+                        size: screenWidth * 0.1,
+                      ),
+                      SizedBox(width: screenWidth * 0.02),
                       dateWidget(
                         title: "Sun\n7",
+                        size: screenWidth * 0.1,
                       ),
                     ],
                   ),
+                  SizedBox(height: screenWidth * 0.02),
                   Row(
                     children: [
-                      Text("Jan 1-Jan 7",style:TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,)
+                      Text(
+                        "Jan 1-Jan 7",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.032,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                       Spacer(),
                       IconButton(
                         icon: Icon(Icons.calendar_today),
                         color: Colors.black,
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                       ),
-
                     ],
-
-
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 12),
+                    padding: EdgeInsets.only(left: screenWidth * 0.04),
                     color: Color(0xFFD9D9D9),
-
                     child: Row(
                       children: [
-                        Text("Monday,Jan 1",style:TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,) ,),
+                        Text(
+                          "Monday, Jan 1",
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.032,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
                         Spacer(),
                         IconButton(
                           icon: Icon(Icons.edit),
                           color: Colors.black,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                         ),
-
                       ],
                     ),
-
                   ),
                   Container(
-
-                   child:   Column(mainAxisAlignment: MainAxisAlignment.end,
-                     children: [
-                       Row(
-                         children: [
-                           Padding(
-                             padding: const EdgeInsets.only(left: 320),
-                             child: IconButton(
-                               icon: Icon(Icons.edit),
-                               color: Colors.black,
-                               onPressed: () {
-
-                               },
-                             ),
-                           ),
-                         ],
-                       ),
-                       RowTextWidget(
-                         firstText: "BreakFast",
-                         secondText: "Mango Juice\n pancakes",
-                       ),
-                       SizedBox(height: 16,),
-                       RowTextWidget(
-                         firstText: "Lunch",
-                         secondText: "Chicken Biriyani\n salad",
-                       ),
-                       SizedBox(height: 16,),
-                       RowTextWidget(
-                         firstText: "Evening snack",
-                         secondText: "Horlicks Biscuits",
-                       ),
-
-                       
-                     ],
-                   ),
-
-
-
-                  ),
-                  SizedBox(height: 30,),
-                  Container(
-                    padding: EdgeInsets.only(left: 12),
-                    color: Color(0xFFD9D9D9),
-
-                    child: Row(
-                      children: [
-                        Text("Monday,Jan 1",style:TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,) ,),
-                        Spacer(),
-                        IconButton(
-                          icon: Icon(Icons.edit),
-                          color: Colors.black,
-                          onPressed: () {
-
-                          },
-                        ),
-
-                      ],
-                    ),
-
-
-
-                  ),
-                  Container(
-
-                    child:   Column(mainAxisAlignment: MainAxisAlignment.end,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 320),
+                              padding: EdgeInsets.only(left: screenWidth * 0.78),
                               child: IconButton(
                                 icon: Icon(Icons.edit),
                                 color: Colors.black,
-                                onPressed: () {
-
-                                },
+                                onPressed: () {},
                               ),
                             ),
                           ],
                         ),
                         RowTextWidget(
-                          firstText: "BreakFast",
-                          secondText: "Milk \n Bread Toast",
+                          firstText: "BreakFast:",
+                          secondText: "Mango Juice\n pancakes",
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(height: screenWidth * 0.04),
                         RowTextWidget(
-                          firstText: "Lunch",
-                          secondText: "Curd Rice\n salad",
+                          firstText: "Lunch:",
+                          secondText: "Chicken Biriyani\n salad",
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(height: screenWidth * 0.04),
                         RowTextWidget(
-                          firstText: "Evening snack",
-                          secondText: "Boost Banana",
+                          firstText: "Evening snack:",
+                          secondText: "Horlicks Biscuits",
                         ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: screenWidth * 0.08),
+                  Container(
+                    padding: EdgeInsets.only(left: screenWidth * 0.04),
+                    color: Color(0xFFD9D9D9),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Tuesday, Jan 1",
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.032,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Spacer(),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          color: Colors.black,
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: screenWidth * 0.78),
+                              child: IconButton(
+                                icon: Icon(Icons.edit),
+                                color: Colors.black,
+                                onPressed: () {},
+                              ),
+                            ),
+                          ],
+                        ),
+                         RowTextWidget(
+                           firstText: "BreakFast:",
+                           secondText: "Milk \n Bread Toast",
+                         ),
+      SizedBox(height: screenWidth * 0.04),
+      RowTextWidget(
+        firstText: "Lunch:",
+        secondText: "Curd Rice\n salad",
+      ),
+      SizedBox(height: screenWidth * 0.04),
+      RowTextWidget(
+        firstText: "Evening snack:",
+        secondText: "Boost Banana",
+      ),
+    ],
+  ),
+),
                       ],
                     ),
                   ),
                 ],
               ),
-
-
             ),
-
-
-          ],
-        ),
-      ),
+       
+     
     );
   }
 }
 
 class RowTextWidget extends StatelessWidget {
-  final String firstText,secondText;
+  final String firstText, secondText;
 
   const RowTextWidget({
-    super.key,  required this.firstText, required this.secondText,
+    Key? key,
+    required this.firstText,
+    required this.secondText,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(firstText,style:TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,)),
-        SizedBox(width: 80,),
-
-        Text(secondText,style:TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,),
-          textAlign: TextAlign.center,
-        ) ],
+        Container(
+          width: screenWidth * 0.3,
+          child: Text(
+            firstText,
+            style: TextStyle(
+              fontSize: screenWidth * 0.032,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+          ),
+        ),
+        SizedBox(width: screenWidth * 0.1),
+        Container(
+          width: screenWidth * 0.5,
+          child: Text(
+            secondText,
+            style: TextStyle(
+              fontSize: screenWidth * 0.032,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
     );
   }
 }
 
 class dateWidget extends StatelessWidget {
   final String title;
+  final double size;
+
   const dateWidget({
-    super.key, required this.title,
+    Key? key,
+    required this.title,
+    required this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-
-      height: 50,
-      width: 50,
-      // padding: EdgeInsets.all(18),
-      color: Color(0xFFD9D9D9),
-      child: Center(child: Text(title,style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,),textAlign: TextAlign.center),),
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Container(
+        height: size,
+        width: size,
+        color: Color(0xFFD9D9D9),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: size * 0.32,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 9, 9, 9),
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
-
   }
 }

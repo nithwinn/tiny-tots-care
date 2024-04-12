@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Parent/activity.dart';
 import 'package:tiny_tots_care/Parent/child_profile.dart';
-import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class Food extends StatefulWidget {
@@ -118,7 +117,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -180,7 +179,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -241,7 +240,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -299,7 +298,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -360,7 +359,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -418,7 +417,7 @@ class _FoodState extends State<Food> {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: const EdgeInsets.only(left: 40, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -510,11 +509,7 @@ class _FoodState extends State<Food> {
                         icon: Icon(Icons.child_care),
                         color: Colors.black,
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => BabyProfile()),
-                          // );
+                        
                         },
                       ),
                       Text("My child"),
@@ -527,11 +522,7 @@ class _FoodState extends State<Food> {
                         icon: Icon(Icons.person),
                         color: Colors.black,
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => ParentProfile()),
-                          // );
+                         
                         },
                       ),
                       Text("Profile"),

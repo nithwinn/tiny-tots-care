@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class DoctorBooking3 extends StatefulWidget {

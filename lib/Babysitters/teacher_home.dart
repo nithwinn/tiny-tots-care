@@ -15,7 +15,7 @@ class _TeacherHomeState extends State<TeacherHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 80.0),
+        padding: const EdgeInsets.only(top: 0.0),
         child: Center(
           child: Column(
             children: [
@@ -25,6 +25,7 @@ class _TeacherHomeState extends State<TeacherHome> {
                 height: 400,
                 fit: BoxFit.fitWidth ,
               ),
+              SizedBox(height: 55,),
               Padding(
                 padding: const EdgeInsets.only(left: 35),
                 child: Row(

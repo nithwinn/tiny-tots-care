@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:tiny_tots_care/Parent/Acoount.dart';
 import 'package:tiny_tots_care/Parent/parent_registration2.dart';
 
 class DaycareSearch extends StatefulWidget {
@@ -41,7 +42,7 @@ class _DaycareSearchState extends State<DaycareSearch> {
                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Parentregistration()),
+                          builder: (context) => Account()),
                     );
               },
               child: Container(

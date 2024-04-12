@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Babysitters/babysitter_edit.dart';
 import 'package:tiny_tots_care/Babysitters/teacher_home.dart';
 
 class BabySitterProfile extends StatefulWidget {
-  const BabySitterProfile({super.key});
+  const BabySitterProfile({Key? key}) : super(key: key);
 
   @override
   State<BabySitterProfile> createState() => _BabySitterProfileState();
@@ -13,106 +14,86 @@ class _BabySitterProfileState extends State<BabySitterProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            'assets/b1.png',
-            fit: BoxFit.fill,
+        toolbarHeight: 50,
+        leading: CircleAvatar(
+  radius: 50,
+  backgroundColor: Colors.transparent, 
+  child: Padding(
+    padding: const EdgeInsets.all(1.0), 
+    child: ClipOval(
+      child: Image.asset(
+        'assets/b1.png',
+        fit: BoxFit.fitHeight,
+      ),
+    ),
+  ),
+),
+
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Dayana',
+              style: TextStyle(color: Colors.black),
+            ),
+            Text(
+              'Female',
+              style: TextStyle(color: Colors.black),
+            ),
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 35),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BabysitterEdit(),
+                  ),
+                );
+              },
+              child: Text(
+                "Edit",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
-        ),
-        title: const Text(
-          'Dayana\nFemale',
-          style: TextStyle(color: Colors.black),
-        ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(35.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+            
+              
                 children: [
                   Text(
-                    "Address",
+                    "Address:",
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BabySitterProfile(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
+                SizedBox(height: 20,),
+             
                   Text(
-                    "Occupation",
+                    "Occupation:",
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BabySitterProfile(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
+               
+              SizedBox(height: 20,),
                   Text(
-                    "Phone Number",
+                    "Phone Number:",
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BabySitterProfile(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
+              
+             SizedBox(height: 20,),
                   Text(
-                    "Whatsapp Number",
+                    "Whatsapp Number:",
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BabySitterProfile(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(height: 470),
+               
+              SizedBox(height: 450),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

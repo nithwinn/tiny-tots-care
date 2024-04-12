@@ -3,7 +3,7 @@ import 'package:tiny_tots_care/Parent/activity.dart';
 import 'package:tiny_tots_care/Parent/child_profile.dart';
 import 'package:tiny_tots_care/a/childprofile.dart';
 
-import 'Parent_profile.dart';
+
 import 'doctor_booking.dart';
 import 'doctor_booking2.dart';
 import 'p.home.dart';

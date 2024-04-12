@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiny_tots_care/Doctors/dhome.dart';
+import 'package:tiny_tots_care/Doctors/doctor_edit.dart';
+import 'package:tiny_tots_care/Doctors/doctor_edit.dart';
 
 class Dhome2 extends StatefulWidget {
   const Dhome2({Key? key});
@@ -10,6 +13,20 @@ class Dhome2 extends StatefulWidget {
 }
 
 class _Dhome2State extends State<Dhome2> {
+  late String doctorId;
+
+  @override
+  void initState() {
+    super.initState();
+    getDoctorId();
+  }
+
+  Future<void> getDoctorId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    doctorId = prefs.getString('doctorId') ?? '';
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +42,28 @@ class _Dhome2State extends State<Dhome2> {
               ),
             ),
             child: Center(
-              child: Image.asset(
-                'assets/logo.png',
-                height: 50,
-                width: 50,
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/logo.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  Text("Edit",
+                  style: TextStyle(
+                    fontSize: 20,fontWeight: FontWeight.bold),),
+                     IconButton(
+                      icon: Icon(Icons.edit),
+                      color: Colors.black,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Editdr()),
+                        );
+                      },
+                    ),
+                ]
               ),
             ),
           ),

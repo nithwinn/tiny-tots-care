@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_tots_care/Parent/enroll_profile.dart';
+import 'package:url_launcher/url_launcher.dart'; 
 import 'package:tiny_tots_care/Parent/activity.dart';
 import 'package:tiny_tots_care/Parent/child_profile.dart';
-import 'package:tiny_tots_care/Parent/staffchat.dart';
-
-import 'Parent_profile.dart';
-import 'p.home.dart';
+import 'package:tiny_tots_care/Parent/p.home.dart';
 
 class Staffs extends StatefulWidget {
   const Staffs({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class _StaffsState extends State<Staffs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70), 
+        preferredSize: Size.fromHeight(70),
         child: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -31,13 +30,13 @@ class _StaffsState extends State<Staffs> {
           ),
           leading: Image.asset(
             'assets/staff.png',
-            height: 560,
-            width: 560,
+            height: 56,
+            width: 56,
           ),
           title: Padding(
             padding: const EdgeInsets.only(left: 35),
             child: Text(
-              'STAFFS',
+              'TEACHER',
               style: TextStyle(
                 color: Color(0xFFE93A4C),
                 fontSize: 35,
@@ -82,15 +81,19 @@ class _StaffsState extends State<Staffs> {
                     ],
                   ),
                   SizedBox(width: 65),
-                  IconButton(
-                    icon: Icon(Icons.chat),
-                    color: Colors.green,
-                    onPressed: () {
-                       Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChatStaff()),
-                    );
+                  GestureDetector(
+                    onTap: () async {
+                      const phoneNumber = 'tel:8025654723';
+                      if (await canLaunch(phoneNumber)) {
+                        await launch(phoneNumber);
+                      } else {
+                        throw 'Could not launch $phoneNumber';
+                      }
                     },
+                    child: Icon(
+                      Icons.call,
+                      color: Colors.green,
+                    ),
                   ),
                 ],
               ),
@@ -126,15 +129,19 @@ class _StaffsState extends State<Staffs> {
                     ],
                   ),
                   SizedBox(width: 65),
-                  IconButton(
-                    icon: Icon(Icons.chat),
-                    color: Colors.green,
-                    onPressed: () {
-                    //   Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => ChatStaff()),
-                    // );
+                  GestureDetector(
+                    onTap: () async {
+                      const phoneNumber = '+91:9025654745';
+                      if (await canLaunch(phoneNumber)) {
+                        await launch(phoneNumber);
+                      } else {
+                        throw 'Could not launch $phoneNumber';
+                      }
                     },
+                    child: Icon(
+                      Icons.call,
+                      color: Colors.green,
+                    ),
                   ),
                 ],
               ),
@@ -168,12 +175,10 @@ class _StaffsState extends State<Staffs> {
                   icon: Icon(Icons.add_circle),
                   color: Colors.black,
                   onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>Activity1()
-                          )
-                        );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Activity1()),
+                    );
                   },
                 ),
                 Text("Activity"),
@@ -186,11 +191,10 @@ class _StaffsState extends State<Staffs> {
                   icon: Icon(Icons.child_care),
                   color: Colors.black,
                   onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BabyProfile()),
-                        );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BabyProfile()),
+                    );
                   },
                 ),
                 Text("My child"),
@@ -203,11 +207,11 @@ class _StaffsState extends State<Staffs> {
                   icon: Icon(Icons.person),
                   color: Colors.black,
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => ParentProfile()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ParentProfile()),
+                    );
                   },
                 ),
                 Text("Profile"),

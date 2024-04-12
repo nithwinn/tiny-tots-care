@@ -8,6 +8,7 @@ import 'package:tiny_tots_care/Doctors/dhome.dart';
 import 'package:tiny_tots_care/Doctors/doctor_registration.dart';
 
 import '../DomainAmin.dart';
+
 class Logind extends StatefulWidget {
   const Logind({super.key});
 
@@ -19,11 +20,12 @@ class _LogindState extends State<Logind> {
   var emailController = TextEditingController();
   var PasswordController = TextEditingController();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
   Future<void> _saveUserIdToSharedPreferences(String userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await prefs.setString('doctorId', userId);
   }
 
@@ -143,6 +145,7 @@ class _LogindState extends State<Logind> {
                             textStyle: const TextStyle(fontSize: 25),
                           ),
                           onPressed: () {
+                            print('.......................');
                             if (_formKey.currentState!.validate()) {
                               // Perform login action
                               validateLoginp();
@@ -191,7 +194,7 @@ class _LogindState extends State<Logind> {
     );
   }
 
- void validateLoginp() async {
+  void validateLoginp() async {
     setState(() {
       _isLoading = true;
     });
@@ -213,10 +216,10 @@ class _LogindState extends State<Logind> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('doctorId', docId);
 
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => Dhome()),
-        );
+        print('Doctor ID: $docId'); // Print the doctorId to console
+
+        // Pass the doctorId to the method
+        navigateToDhome(docId);
       } else {
         showDialog(
           context: context,
@@ -243,5 +246,12 @@ class _LogindState extends State<Logind> {
         _isLoading = false;
       });
     }
+  }
+
+  void navigateToDhome(String doctorId) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Dhome()),
+    );
   }
 }

@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tiny_tots_care/Babysitters/babysitters_registration.dart';
 import 'package:tiny_tots_care/Babysitters/teacher_home.dart';
 
 import '../Admin/forgotten.dart';
@@ -18,76 +20,24 @@ class _LoginbState extends State<Loginb> {
   TextEditingController passwordController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+bool _isLoading = false;
 
- Future<void> _loginb() async {
-  if (_formKey.currentState!.validate()) {
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+  Future<void> _saveUserIdToSharedPreferences(String userId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      User? user = userCredential.user;
-
-        DocumentSnapshot<Map<String, dynamic>> snapshot =
-          await FirebaseFirestore.instance
-              .collection('babysitters')
-              .doc(user!.uid)
-              .get();
-
-      if (snapshot.exists) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('BabysitterId', user.uid);
-
-          Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => TeacherHome()),
-        );
-      } else {
-        // If user does not exist in the "babysitters" collection, show error
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Login Error'),
-              content: Text('User not found or unauthorized.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Login Error'),
-              content: Text('Invalid email or password.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    }
+    await prefs.setString('BabysitterId', userId);
   }
-}
 
+  void _showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: const Color.fromARGB(255, 48, 46, 46),
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +61,11 @@ class _LoginbState extends State<Loginb> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Center(
-                      child:
-                          Text("LOGIN", style: TextStyle(color: Colors.black))),
+                    child: Text(
+                      "LOGIN",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
                   SizedBox(
                     height: 50,
                   ),
@@ -120,12 +73,12 @@ class _LoginbState extends State<Loginb> {
                     controller: emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return 'Enter Email Id';
                       }
                       return null;
                     },
                     decoration: InputDecoration(
-                      hintText: "email",
+                      hintText: "Email",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -138,7 +91,7 @@ class _LoginbState extends State<Loginb> {
                     controller: passwordController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return 'Enter Password';
                       }
                       return null;
                     },
@@ -186,16 +139,46 @@ class _LoginbState extends State<Loginb> {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: Colors.blue,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.all(6.0),
                             textStyle: const TextStyle(fontSize: 25),
                           ),
-                          onPressed: _loginb,
+                          onPressed: () {
+                            print('.......................');
+                            if (_formKey.currentState!.validate()) {
+                              // Perform login action
+                              validateLoginp();
+                            }
+                          },
                           child: Center(
                             child: Text(
                               "LOG IN",
                             ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 75),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Don't have an account?",
+                          style: TextStyle(fontSize: 20, color: Colors.black),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Babysittersregistration()),
+                            );
+                          },
+                          child: Text(
+                            " Sign-up",
+                            style: TextStyle(fontSize: 20, color: Colors.blue),
                           ),
                         ),
                       ],
@@ -209,4 +192,66 @@ class _LoginbState extends State<Loginb> {
       ),
     );
   }
+
+  void validateLoginp() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final String enteredEmail = emailController.text;
+    final String enteredPassword = passwordController.text;
+
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('babysitters')
+          .where('email', isEqualTo: enteredEmail)
+          .where('password', isEqualTo: enteredPassword)
+          .limit(1)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String docId = querySnapshot.docs.first.id;
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('BabysitterId', docId);
+
+        print('BabysitterId: $docId'); 
+
+        
+        navigateToDhome(docId);
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Invalid Credentials'),
+              content: Text('Please enter valid email and password.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void navigateToDhome(String doctorId) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => TeacherHome()),
+    );
+  }
 }
+

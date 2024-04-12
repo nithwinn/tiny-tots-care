@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Parent/activity.dart';
+import 'package:tiny_tots_care/Parent/addhealth.dart';
+import 'package:tiny_tots_care/Parent/enroll_profile.dart';
 import 'package:tiny_tots_care/a/childprofile.dart';
-import 'Parent_profile.dart';
+
 import 'child_profile.dart';
 import 'p.home.dart';
 
@@ -117,17 +119,24 @@ class _BabyHealthState extends State<BabyHealth> {
             left: 20,
             child: Row(
               children: [
-                Text(
-                  "Temparature:",
-                  style: TextStyle(fontSize: 20),
+                Column(
+                  children: [
+                    Text(
+                      "Temparature:",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    
+                  ],
                 ),
                 SizedBox(width: 55),
                 Text(
                   "Normal",
                   style: TextStyle(fontSize: 20),
                 ),
+               
               ],
             ),
+            
           ),
           Padding(
             padding: const EdgeInsets.only(top: 800, left: 20.0),

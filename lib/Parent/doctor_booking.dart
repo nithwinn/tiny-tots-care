@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Parent/doctor_booking3.dart';
 
 import '../DomainAmin.dart';
-import 'Parent_profile.dart';
 import 'p.home.dart';
 
 class DoctorBooking extends StatefulWidget {

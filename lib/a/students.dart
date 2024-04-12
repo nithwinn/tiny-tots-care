@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiny_tots_care/Babysitters/Babysitter_profile.dart';
+import 'package:tiny_tots_care/Babysitters/add.dart';
 import 'package:tiny_tots_care/Babysitters/teacher_home.dart';
 
 class StudentScreen extends StatefulWidget {
@@ -123,10 +124,10 @@ class _StudentScreenState extends State<StudentScreen> {
                       textStyle: const TextStyle(fontSize: 25),
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => DoctorBooking3()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Add()),
+                      );
                     },
                     child: Center(
                       child:  Text("Add Activity",style: TextStyle(
